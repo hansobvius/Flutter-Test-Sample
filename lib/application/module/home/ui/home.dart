@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Home extends StatefulWidget {
   
@@ -11,13 +12,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
       _counter++;
       if (_counter == 11) {
-
+        context.go(context.namedLocation(
+          'counter_result',
+          params: <String, String>{
+            'counterResultValue' : _counter.toString()
+          }
+        ));
       }
     });
   }

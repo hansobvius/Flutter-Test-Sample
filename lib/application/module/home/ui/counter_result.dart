@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class CounterResult extends StatelessWidget {
 
-  final int? counterResultValue;
+  final String counterResultValue;
 
-  const CounterResult({super.key, this.counterResultValue});
+  const CounterResult({super.key, required this.counterResultValue});
 
   @override
   Widget build(BuildContext context) {
