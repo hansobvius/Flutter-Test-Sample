@@ -16,6 +16,9 @@ class _HomeState extends State<Home> {
   void _incrementCounter() {
     setState(() {
       _counter++;
+      if (_counter == 11) {
+
+      }
     });
   }
 

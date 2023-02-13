@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'module/home/ui/home.dart';
+import 'module/home/route/home_module_router.dart';
 
 class App extends StatelessWidget {
 
@@ -7,12 +7,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Integration Test Sample',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Home(title: 'Flutter integration test sample'),
+      routerConfig: homeModuleRouter,
     );
   }
 }
