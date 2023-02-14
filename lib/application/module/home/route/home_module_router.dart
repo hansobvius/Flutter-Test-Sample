@@ -6,7 +6,7 @@ import '../ui/home.dart';
 /// Home Module Router
 ///
 
-GoRouter homeModuleRouter = GoRouter(
+final GoRouter homeModuleRouter = GoRouter(
     debugLogDiagnostics: true,
     routes: <RouteBase>[
       GoRoute(
@@ -20,7 +20,7 @@ GoRouter homeModuleRouter = GoRouter(
             name: 'counter_result',
             path: 'counter_result',
             builder: (BuildContext context, GoRouterState state) {
-              return CounterResult(counterResultValue: state.params['counterResultParam']!);
+              return CounterResult(counterResultValue: state.queryParams['counterResultValue']!);
             }
           )
         ]

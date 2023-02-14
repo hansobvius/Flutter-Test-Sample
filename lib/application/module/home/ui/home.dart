@@ -19,12 +19,9 @@ class _HomeState extends State<Home> {
     setState(() {
       _counter++;
       if (_counter == 11) {
-        context.go(context.namedLocation(
-          'counter_result',
-          params: <String, String>{
-            'counterResultValue' : _counter.toString()
-          }
-        ));
+        context.goNamed('counter_result', queryParams: {
+          'counterResultValue' : _counter.toString()
+        });
       }
     });
   }
