@@ -46,15 +46,20 @@ void main() {
       // Trigger a frame.
       await tester.pumpAndSettle();
 
-      // Verify the counter increments by 1.
+      // Verify the counter increments by 11.
       expect(find.text('11'), findsOneWidget);
-
-      var textWidgetData = (find.byKey(const Key('COUNTER_RESULT')).allCandidates.first.widget as Text).data;
-
-      expect(textWidgetData == '11', true);
 
       final findCounterResult = find.byKey(const Key('COUNTER_RESULT'));
       expect(findCounterResult, findsOneWidget);
+
+      // Check current value of Text Widget data
+      var textWidget = findCounterResult.evaluate().first.widget as Text;
+      var textWidgetCurrentValue = textWidget.data;
+      expect(
+          textWidgetCurrentValue != null
+              && textWidgetCurrentValue != ''
+              && textWidgetCurrentValue == '11',
+          true);
     });
 
   });

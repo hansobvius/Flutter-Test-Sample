@@ -65,10 +65,11 @@ void main() {
       // Verify the counter increments by 1.
       expect(find.text('11'), findsOneWidget);
 
-      /// check if a particular widget could be fond on screen
+      // check if a particular widget could be fond on screen
       var textWidgetData = find.byKey(const Key('COUNTER_RESULT'));
       expect(textWidgetData, findsOneWidget);
 
+      // Check current value of Text Widget data
       var textWidget = textWidgetData.evaluate().first.widget as Text;
       var textWidgetCurrentValue = textWidget.data;
       expect(
