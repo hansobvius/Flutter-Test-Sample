@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_driver_sample/application/app.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
@@ -36,7 +37,7 @@ void main() {
       app.main();
       await tester.pumpAndSettle();
 
-      final Finder fab = find.byTooltip('Increment');
+      final Finder fab = find.byKey(const Key('FLOATING_BUTTON_INCREMENT'));
 
       for(int c = 10; c >= 0; c--) {
         await tester.tap(fab);
@@ -47,6 +48,10 @@ void main() {
 
       // Verify the counter increments by 1.
       expect(find.text('11'), findsOneWidget);
+
+      var textWidgetData = (find.byKey(const Key('COUNTER_RESULT')).allCandidates.first.widget as Text).data;
+
+      expect(textWidgetData == '11', true);
 
       final findCounterResult = find.byKey(const Key('COUNTER_RESULT'));
       expect(findCounterResult, findsOneWidget);
