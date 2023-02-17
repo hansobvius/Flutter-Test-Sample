@@ -11,6 +11,7 @@ void main() {
   group('INTEGRATION TEST', () {
 
     testWidgets('counter increments smoke test', (WidgetTester tester) async {
+
       // Build our app and trigger a frame.
       await tester.pumpWidget(const App());
 
@@ -29,6 +30,7 @@ void main() {
 
     testWidgets('first view text', (tester) async {
 
+      // Initialize
       app.main();
       await tester.pumpAndSettle();
 
@@ -50,24 +52,27 @@ void main() {
 
     testWidgets('second view test', (tester) async {
 
+      // Initialize
       app.main();
       await tester.pumpAndSettle();
 
+      // Find floating button by key
       final Finder fab = find.byKey(const Key('FLOATING_BUTTON_INCREMENT'));
+      expect(fab, findsOneWidget,
+          reason: 'Check if exist a floating button widget with declared key');
 
-      for(int c = 10; c >= 0; c--) {
+      // Increment until matches 11 value
+      for(int c = 0; c <= 10; c++) {
         await tester.tap(fab);
       }
 
       // Trigger a frame.
       await tester.pumpAndSettle();
 
-      // Verify the counter increments by 1.
-      expect(find.text('11'), findsOneWidget);
-
       // check if a particular widget could be fond on screen
-      var textWidgetData = find.byKey(const Key('COUNTER_RESULT'));
-      expect(textWidgetData, findsOneWidget);
+      final Finder textWidgetData = find.byKey(const Key('COUNTER_RESULT'));
+      expect(textWidgetData, findsOneWidget,
+          reason: 'Check if exist a text widget with declared key');
 
       // Check current value of Text Widget data
       var textWidget = textWidgetData.evaluate().first.widget as Text;
@@ -76,8 +81,8 @@ void main() {
           textWidgetCurrentValue != null
               && textWidgetCurrentValue != ''
               && textWidgetCurrentValue == '11',
-          true);
+          true,
+          reason: 'Check if value matches 11 by retrieve the widget by its key');
     });
-
   });
 }
