@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_driver_sample/application/module/login/route/login_module_router.dart';
 import 'module/home/route/home_module_router.dart';
 
 class App extends StatelessWidget {
@@ -12,7 +13,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routerConfig: homeModuleRouter,
+      routerConfig: loginModuleRouter,
     );
   }
 }
