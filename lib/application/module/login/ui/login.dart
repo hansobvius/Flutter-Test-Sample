@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../controller/login_controller.dart';
 import '../components/login_components.dart';
@@ -23,6 +24,17 @@ class _LoginState extends State<Login> {
   final String _passwordInitialValue = 'Password';
   final int _maxLines = 1;
   final int _maxLength = 20;
+
+  Future _checkLogin() async {
+    _controller.checkLogin(
+        _textUsernameController.text,
+        _textPasswordController.text,
+            (bool isValid) {
+              if (isValid) {
+                context.goNamed('home');
+              }
+            });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,12 +107,8 @@ class _LoginState extends State<Login> {
                     ),
                     Container(
                       child: TextButton(
-                        child: Text('click here'),
-                        onPressed: () {
-                          _controller.checkLogin(
-                              _textUsernameController.value.text,
-                              _textPasswordController.value.text);
-                        },
+                        onPressed: _checkLogin,
+                        child: const Text('click here'),
                       ),
                     )
                   ],
