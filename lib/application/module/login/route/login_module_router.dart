@@ -8,7 +8,7 @@ final GoRouter loginModuleRouter = GoRouter(
   routes: <RouteBase>[
     GoRoute(
       name: 'login',
-      path: 'login',
+      path: '/',
       builder: (BuildContext context, GoRouterState state) {
         return const Login();
       }
