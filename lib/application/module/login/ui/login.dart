@@ -25,15 +25,25 @@ class _LoginState extends State<Login> {
   final int _maxLines = 1;
   final int _maxLength = 20;
 
+  bool _isLoading = false;
+
+  void setLoadingState() => setState(() {
+    _isLoading = !_isLoading;
+  });
+
   Future _checkLogin() async {
-    _controller.checkLogin(
-        _textUsernameController.text,
-        _textPasswordController.text,
-            (bool isValid) {
-              if (isValid) {
-                context.goNamed('home');
-              }
-            });
+    if (_textUsernameController.text != '' && _textPasswordController.text != '') {
+      setLoadingState();
+      _controller.checkLogin(
+          _textUsernameController.text,
+          _textPasswordController.text,
+              (bool isValid) {
+            setLoadingState();
+            if (isValid) {
+              context.goNamed('home');
+            }
+          });
+    }
   }
 
   @override
@@ -105,11 +115,22 @@ class _LoginState extends State<Login> {
                         width: MediaQuery.of(context).size.width,
                         height: 8.0
                     ),
-                    Container(
-                      child: TextButton(
-                        onPressed: _checkLogin,
-                        child: const Text('click here'),
-                      ),
+                    Builder(
+                      builder: (context) {
+                        if (_isLoading) {
+                          return const SizedBox(
+                              width: 40.0,
+                              height: 40.0,
+                              child: CircularProgressIndicator()
+                          );
+                        }
+                        return Container(
+                          child: TextButton(
+                            onPressed: _checkLogin,
+                            child: const Text('click here'),
+                          ),
+                        );
+                      }
                     )
                   ],
                 ),
