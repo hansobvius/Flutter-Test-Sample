@@ -4,16 +4,18 @@ import 'package:flutter/material.dart';
 ///
 
 Widget customTextFormField({
+  required Key key,
   required TextEditingController controller,
   required String initialValue,
   required int maxLines,
   required int maxLength,
   required Function(String? value) validator}) => TextFormField(
+  key: key,
   controller: controller,
   maxLines: maxLines,
   maxLength: maxLength,
   decoration: InputDecoration(
-    border: UnderlineInputBorder(),
+    border: const UnderlineInputBorder(),
     labelText: initialValue,
   ),
   validator: (String? value) {

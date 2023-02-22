@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_driver_sample/application/app.dart';
+import 'package:flutter_driver_sample/application/app_routes.dart';
+import 'package:flutter_driver_sample/application/module/home/ui/home.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_driver_sample/main.dart' as app;
 
-
+MaterialApp initializeSingleView(Widget obj) {
+  return MaterialApp(
+    title: 'Flutter Integration Test Sample',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    home: obj,
+  );
+}
 
 void main() {
 
-  group('INTEGRATION TEST', () {
+  group('HOME TEST', () {
 
     testWidgets('counter increments smoke test', (WidgetTester tester) async {
 
       // Build our app and trigger a frame.
-      await tester.pumpWidget(const App());
+      await tester.pumpWidget(initializeSingleView(const Home(title: 'home')));
 
       // Verify that our counter starts at 0.
       expect(find.text('0'), findsOneWidget);
@@ -31,7 +41,7 @@ void main() {
     testWidgets('first view text', (tester) async {
 
       // Initialize
-      app.main();
+      await tester.pumpWidget(initializeSingleView(const Home(title: 'home')));
       await tester.pumpAndSettle();
 
       // Verify the counter starts at 0.

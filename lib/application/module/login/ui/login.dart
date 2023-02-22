@@ -76,6 +76,7 @@ class _LoginState extends State<Login> {
                     Container(
                       padding: _textFormFieldPadding,
                       child: customTextFormField(
+                        key: const Key('USERNAME_FORM'),
                         controller: _textUsernameController,
                         initialValue: _usernameInitialValue,
                         maxLines: _maxLines,
@@ -97,6 +98,7 @@ class _LoginState extends State<Login> {
                     Container(
                       padding: _textFormFieldPadding  ,
                       child: customTextFormField(
+                        key: const Key('PASSWORD_FORM'),
                         controller: _textPasswordController,
                         initialValue: _passwordInitialValue,
                         maxLines: _maxLines,
@@ -126,6 +128,7 @@ class _LoginState extends State<Login> {
                         }
                         return Container(
                           child: TextButton(
+                            key: const Key('TEXT_BUTTON'),
                             onPressed: _checkLogin,
                             child: const Text('click here'),
                           ),
