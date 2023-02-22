@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// base widget to test single view
 ///
 
-MaterialApp initializeSingleView(Widget obj) {
+Widget initializeSingleView(Widget obj) {
   return MaterialApp(
     title: 'Flutter Integration Test Sample',
     theme: ThemeData(
