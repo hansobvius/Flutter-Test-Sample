@@ -8,8 +8,13 @@ import '../base_widget_test_launcher.dart';
 
 void main() {
 
-  late Login _login;
+  late Login? _login;
   late LoginController? _loginController;
+
+  // Retrieve widgets components by their key
+  var usernameTextForm = find.byKey(const Key('USERNAME_FORM'));
+  var passwordTextForm = find.byKey(const Key('PASSWORD_FORM'));
+  var textButton       = find.byKey(const Key('TEXT_BUTTON'));
 
   group('Login TEST', () {
 
@@ -18,19 +23,21 @@ void main() {
       _loginController = LoginController();
     });
 
-    testWidgets('login authentication success test', (WidgetTester tester) async {
+    testWidgets('Check if widgets could be found', (WidgetTester tester) async {
 
-      await tester.pumpWidget(initializeSingleView(_login));
+      await tester.pumpWidget(initializeSingleView(_login!));
       await tester.pumpAndSettle();
-
-      var usernameTextForm = find.byKey(const Key('USERNAME_FORM'));
-      var passwordTextForm = find.byKey(const Key('PASSWORD_FORM'));
-      var textButton = find.byKey(const Key('TEXT_BUTTON'));
 
       // Check if follow widget can be found from view
       expect(usernameTextForm, findsOneWidget, reason: 'Check if USERNAME FORM exists');
       expect(passwordTextForm, findsOneWidget, reason: 'Check if PASSWORD FORM exists');
       expect(textButton, findsOneWidget, reason: 'Check if TEXT BUTTON exists');
+    });
+
+    testWidgets('Login authentication success test', (WidgetTester tester) async {
+
+      await tester.pumpWidget(initializeSingleView(_login!));
+      await tester.pumpAndSettle();
 
       // Inout text value
       await tester.enterText(usernameTextForm, 'Thiago');
@@ -45,9 +52,20 @@ void main() {
       var passwordController = (passwordTextForm.evaluate().first.widget as TextFormField).controller;
       expect(passwordController != null && passwordController is TextEditingController, true,
           reason: 'Check if PASSWORD TEXT CONTROLLER exists');
+
+      if (usernameController != null && passwordController != null) {
+        await tester.runAsync(() async {
+          await _loginController!.checkLogin(
+              usernameController.text, passwordController.text, (isValid) {
+            expect(isValid, true,
+                reason: 'Check if login authentication was successful');
+          });
+        });
+      }
     });
 
     tearDown(() {
+      _login = null;
       _loginController = null;
     });
   });
