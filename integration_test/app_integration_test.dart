@@ -19,7 +19,7 @@ void main() {
 
     testWidgets('login authentication success test', (WidgetTester tester) async {
 
-      /// START APP
+      /// START APP FROM LOGIN VIEW
       app.main();
       await tester.pumpAndSettle();
 
@@ -34,7 +34,7 @@ void main() {
       expect(textButton, findsOneWidget, reason: 'Check if TEXT BUTTON exists');
 
       // Input text value
-      await tester.enterText(usernameTextForm, 'Thiago');
+      await tester.enterText(usernameTextForm, 'YOUR_USERNAME');
       await tester.enterText(passwordTextForm, '123');
 
       // Retrieve username editing text controller from widget
@@ -56,7 +56,7 @@ void main() {
         });
       });
 
-      // Check if TEXT BUTTON widget existsa
+      // Check if TEXT BUTTON widget exists
       var loginButton = find.byKey(const Key('TEXT_BUTTON'));
       expect(loginButton, findsOneWidget, reason: 'Check if login test button could be found');
 

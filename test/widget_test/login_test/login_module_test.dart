@@ -14,7 +14,7 @@ void main() {
   // Retrieve widgets components by their key
   var usernameTextForm = find.byKey(const Key('USERNAME_FORM'));
   var passwordTextForm = find.byKey(const Key('PASSWORD_FORM'));
-  var textButton       = find.byKey(const Key('TEXT_BUTTON'));
+  var textButton = find.byKey(const Key('TEXT_BUTTON'));
 
   group('Login TEST', () {
 
@@ -40,7 +40,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Input text value
-      await tester.enterText(usernameTextForm, 'Thiago');
+      await tester.enterText(usernameTextForm, 'YOUR_USERNAME');
       await tester.enterText(passwordTextForm, '123');
 
       // Retrieve username editing text controller from widget

@@ -17,7 +17,7 @@ class LoginController extends ChangeNotifier {
       password = passWord;
       await Future.delayed(const Duration(milliseconds: 5000), () {
         isLoading = true;
-        if (username == 'Thiago' && password == '123') {
+        if (username == 'YOUR_USERNAME' && password == '123') {
           isLoading = false;
           verifyUser = true;
           isValid(verifyUser ?? false);

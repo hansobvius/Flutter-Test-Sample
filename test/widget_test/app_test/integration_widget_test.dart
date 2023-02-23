@@ -33,7 +33,7 @@ void main() {
       expect(textButton, findsOneWidget, reason: 'Check if TEXT BUTTON exists');
 
       // Input text value
-      await tester.enterText(usernameTextForm, 'Thiago');
+      await tester.enterText(usernameTextForm, 'YOUR_USERNAME');
       await tester.enterText(passwordTextForm, '123');
 
       // Retrieve username editing text controller from widget
