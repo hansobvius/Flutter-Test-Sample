@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_driver_sample/application/app.dart';
-import 'package:flutter_driver_sample/application/app_routes.dart';
 import 'package:flutter_driver_sample/application/module/home/ui/home.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_driver_sample/main.dart' as app;
+import '../base_widget_test_launcher.dart';
+import 'home_module_router.dart';
 
-MaterialApp initializeSingleView(Widget obj) {
-  return MaterialApp(
-    title: 'Flutter Integration Test Sample',
-    theme: ThemeData(
-      primarySwatch: Colors.blue,
-    ),
-    home: obj,
-  );
-}
 
 void main() {
 
@@ -63,7 +53,7 @@ void main() {
     testWidgets('second view test', (tester) async {
 
       // Initialize
-      app.main();
+      await tester.pumpWidget(initializeSingleRouterView(homeModuleRouter));
       await tester.pumpAndSettle();
 
       // Find floating button by key

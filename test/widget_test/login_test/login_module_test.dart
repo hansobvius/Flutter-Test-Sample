@@ -39,7 +39,7 @@ void main() {
       await tester.pumpWidget(initializeSingleView(_login!));
       await tester.pumpAndSettle();
 
-      // Inout text value
+      // Input text value
       await tester.enterText(usernameTextForm, 'Thiago');
       await tester.enterText(passwordTextForm, '123');
 

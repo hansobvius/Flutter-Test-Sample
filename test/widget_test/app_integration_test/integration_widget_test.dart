@@ -1,74 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_driver_sample/application/app.dart';
-import 'package:flutter_driver_sample/application/app_routes.dart';
-import 'package:flutter_driver_sample/application/module/home/ui/home.dart';
+import 'package:flutter_driver_sample/application/module/login/controller/login_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_driver_sample/main.dart' as app;
 
-MaterialApp initializeSingleView(Widget obj) {
-  return MaterialApp(
-    title: 'Flutter Integration Test Sample',
-    theme: ThemeData(
-      primarySwatch: Colors.blue,
-    ),
-    home: obj,
-  );
-}
+
 
 void main() {
 
+  late LoginController? _loginController;
+
   group('INTEGRATION TEST', () {
 
+    setUp(() {
+      _loginController = LoginController();
+    });
+
     testWidgets('login authentication success test', (WidgetTester tester) async {
+
+      /// START APP
       app.main();
       await tester.pumpAndSettle();
-    });
 
-    testWidgets('counter increments smoke test', (WidgetTester tester) async {
+      // Retrieve widgets components by their key
+      var usernameTextForm = find.byKey(const Key('USERNAME_FORM'));
+      var passwordTextForm = find.byKey(const Key('PASSWORD_FORM'));
+      var textButton       = find.byKey(const Key('TEXT_BUTTON'));
 
-      // Build our app and trigger a frame.
-      await tester.pumpWidget(initializeSingleView(const Home(title: 'home')));
+      // Check if follow widget can be found from view
+      expect(usernameTextForm, findsOneWidget, reason: 'Check if USERNAME FORM exists');
+      expect(passwordTextForm, findsOneWidget, reason: 'Check if PASSWORD FORM exists');
+      expect(textButton, findsOneWidget, reason: 'Check if TEXT BUTTON exists');
 
-      // Verify that our counter starts at 0.
-      expect(find.text('0'), findsOneWidget);
-      expect(find.text('1'), findsNothing);
+      // Input text value
+      await tester.enterText(usernameTextForm, 'Thiago');
+      await tester.enterText(passwordTextForm, '123');
 
-      // Tap the '+' icon and trigger a frame.
-      await tester.tap(find.byIcon(Icons.add));
-      await tester.pump();
+      // Retrieve username editing text controller from widget
+      var usernameController = (usernameTextForm.evaluate().first.widget as TextFormField).controller;
+      expect(usernameController != null && usernameController is TextEditingController, true,
+          reason: 'Check if USERNAME TEXT CONTROLLER exists');
 
-      // Verify that our counter has incremented.
-      expect(find.text('0'), findsNothing);
-      expect(find.text('1'), findsOneWidget);
-    });
+      // Retrieve password editing text controller from widget
+      var passwordController = (passwordTextForm.evaluate().first.widget as TextFormField).controller;
+      expect(passwordController != null && passwordController is TextEditingController, true,
+          reason: 'Check if PASSWORD TEXT CONTROLLER exists');
 
-    testWidgets('first view text', (tester) async {
+      // Test controller login function
+      await tester.runAsync(() async {
+        await _loginController!.checkLogin(
+            usernameController!.text, passwordController!.text, (isValid) {
+          expect(isValid, true,
+              reason: 'Check if login authentication was successful');
+        });
+      });
 
-      // Initialize
-      await tester.pumpWidget(initializeSingleView(const Home(title: 'home')));
-      await tester.pumpAndSettle();
+      var loginButton = find.byKey(const Key('TEXT_BUTTON'));
+      expect(loginButton, findsOneWidget, reason: 'Check if login test button could be found');
 
-      // Verify the counter starts at 0.
-      expect(find.text('0'), findsOneWidget);
+      await tester.tap(loginButton);
 
-      // Finds the floating action button to tap on.
-      final Finder fab = find.byTooltip('Increment');
-
-      // Emulate a tap on the floating action button.
-      await tester.tap(fab);
-
-      // Trigger a frame.
-      await tester.pumpAndSettle();
-
-      // Verify the counter increments by 1.
-      expect(find.text('1'), findsOneWidget);
-    });
-
-    testWidgets('second view test', (tester) async {
-
-      // Initialize
-      app.main();
+      /// START HOME VIEW
       await tester.pumpAndSettle();
 
       // Find floating button by key
@@ -98,6 +90,10 @@ void main() {
               && textWidgetCurrentValue == '11',
           true,
           reason: 'Check if value matches 11 by retrieve the widget by its key');
+    });
+
+    tearDown(() {
+      _loginController = null;
     });
   });
 }
