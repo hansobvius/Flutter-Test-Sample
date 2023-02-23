@@ -1,15 +1,15 @@
 # flutter_driver_sample
 
-A new Flutter project.
+Flutter Integration Test Sample
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+A simple project used to demonstrate Widget and Integration app tests
 
-A few resources to get you started if this is your first Flutter project:
+The following links are useful information from Flutter documentation, to show how start your first Widget and Integration tests.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [Integration Test Cookbook](https://docs.flutter.dev/cookbook/testing/integration/introduction)
+- [Widget Test Cookbook](https://docs.flutter.dev/cookbook/testing/widget/introduction)
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
