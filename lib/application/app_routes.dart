@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 final GoRouter appModuleRouter = GoRouter(
     debugLogDiagnostics: true,
     routes: <RouteBase>[
-      loginModuleRouter,
+      // loginModuleRouter,
       homeModuleRouter
     ]
 );

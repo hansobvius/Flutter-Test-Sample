@@ -8,7 +8,7 @@ import '../ui/home.dart';
 
 final GoRoute homeModuleRouter = GoRoute(
     name: 'home',
-    path: '/home',
+    path: '/',
     builder: (BuildContext context, GoRouterState state) {
       return const Home(title: 'Flutter integration test sample');
     },
