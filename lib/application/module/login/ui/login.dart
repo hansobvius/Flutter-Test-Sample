@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'components/login_components.dart';
 import '../controller/login_controller.dart';
-import '../components/login_components.dart';
 
 class Login extends StatefulWidget {
 
