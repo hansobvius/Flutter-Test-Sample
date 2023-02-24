@@ -47,6 +47,7 @@ class _ListItemsState extends State<ListItemsView> {
           if (_controller.isLoading) {
             return const Center(
               child: SizedBox(
+                key: Key('CIRCULAR_PROGRESS'),
                 height: 40.0,
                 width: 40.0,
                 child: CircularProgressIndicator()
@@ -55,10 +56,12 @@ class _ListItemsState extends State<ListItemsView> {
           }
 
           return ListView.separated(
+              key: const Key('LIST_VIEW_SEPARATED'),
               itemCount: _controller.wordListLength,
               separatorBuilder: (BuildContext context, int index) => const Divider(),
               itemBuilder: (context, index) {
                 return ListTile(
+                  key: Key('${index}_LIST_TILE'),
                   title: Text(_generatedWordList![index]),
                 );
               }
