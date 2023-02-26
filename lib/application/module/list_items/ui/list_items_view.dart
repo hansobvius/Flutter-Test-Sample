@@ -32,6 +32,7 @@ class _ListItemsState extends State<ListItemsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('ITEM_VIEW_BUILD'),
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text(
