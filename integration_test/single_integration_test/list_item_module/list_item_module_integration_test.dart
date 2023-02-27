@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_driver_sample/application/module/list_items/ui/list_items_view.dart';
+import 'package:flutter_driver_sample/application/module/login/controller/login_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
 
-import '../base_widget_test_launcher.dart';
-import 'list_items_router.dart';
+import 'package:flutter_driver_sample/main.dart' as app;
+
+import '../../../test/widget_test/base_widget_test_launcher.dart';
 
 void main() {
 
-  group('List item widget test', () {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+  group('LIST ITEM VIEW', () {
 
     testWidgets('Test generated list', (WidgetTester tester) async {
 
@@ -47,15 +52,17 @@ void main() {
 
           final listViewFinder = find.byType(ListView);
           final listViewHeight = tester.getSize(listViewFinder).height;
+          print('LIST_ITEM_HEIGHT $listViewHeight');
           await tester.scrollUntilVisible(
               listViewFinder,
-              listViewHeight,
-              duration: Duration(seconds: 5));
+              listViewHeight * 1000,
+              duration: const Duration(seconds: 1));
 
           // await tester.scrollUntilVisible(find.byType(ListView), 1000.0);
 
           // var lastListTile = find.byKey(const Key('1000_LIST_TILE'));
           var lastListTile = find.byType(ListTile).last;
+          print('LIST_TILE_KEY ${lastListTile.evaluate()}');
           expect(lastListTile, findsOneWidget, reason: 'Check if last list element exists');
         });
       });

@@ -63,7 +63,9 @@ class _ListItemsState extends State<ListItemsView> {
               itemBuilder: (context, index) {
                 return ListTile(
                   key: Key('${index}_LIST_TILE'),
-                  title: Text(_generatedWordList![index]),
+                  title: Text('$index position'),
+                  subtitle: Text(_generatedWordList![index]),
+                  tileColor: Colors.teal,
                 );
               }
           );
