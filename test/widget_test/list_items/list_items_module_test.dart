@@ -56,38 +56,35 @@ void main() {
 
 
           final listViewFinder = find.byType(ListView);
+          // final listTileFinder = find.byType(ListTile);
+          // final listDividerFinder = find.byType(Divider);
+
           final listViewHeight = tester.getSize(listViewFinder).height;
+          // final listTileViewHeight = tester.getSize(listTileFinder).height;
+          // final listDividerViewHeight = tester.getSize(listDividerFinder).height;
+
 
           final scrollableFinder = find.descendant( of: listViewFinder, matching: find.byType(Scrollable), );
 
-          // await tester.scrollUntilVisible(
-          //     listViewFinder,
-          //     listViewHeight * 1000,
-          //     scrollable: scrollableFinder,
-          //     duration: Duration(seconds: 1));
 
           final listFinder = find.byType(Scrollable);
-          final itemFinder = find.byKey(const ValueKey('6_LIST_TILE'));
+          final itemFinder = find.byKey(const ValueKey('570_LIST_TILE'));
 
           await tester.scrollUntilVisible(
             itemFinder,
-            listViewHeight * 1000,
+            1000.0,
             scrollable: scrollableFinder,
+            // duration: Duration(milliseconds: 1000)
           );
 
           print('LIST_TILE_KEY ${itemFinder.evaluate()}');
 
+          Finder lastListTile = find.byType(ListTile).last;
+
+          print('LAST_TILE_KEY ${lastListTile.evaluate()}');
+
           expect(itemFinder, findsOneWidget);
-
-          // await tester.scrollUntilVisible(find.byType(ListView), 1000.0);
-
-          // var lastListTile = find.byKey(const Key('1000_LIST_TILE'));
-          // Finder lastListTile = find.byType(ListTile).last;
-          // print('LIST_TILE_KEY ${lastListTile.evaluate()}');
-          // expect(lastListTile, findsOneWidget, reason: 'Check if last list element exists');
-
-          // var result = await widgetScroll(tester);
-          // expect(result, findsOneWidget, reason: 'Check if last list element exists');
+          expect(lastListTile, findsOneWidget);
         });
       });
 

@@ -22,6 +22,7 @@ class _ListItemsState extends State<ListItemsView> {
   }
 
   void _initListView() {
+    print('_initListView');
     _controller.generateList((list) {
       setState(() {
         _generatedWordList = list;
@@ -61,8 +62,11 @@ class _ListItemsState extends State<ListItemsView> {
               itemCount: _controller.wordListLength,
               separatorBuilder: (BuildContext context, int index) => const Divider(),
               itemBuilder: (context, index) {
+                print('LENGTH ${_controller.wordListLength}');
+                String key = '${index}_LIST_TILE';
+                print('KEY $key');
                 return ListTile(
-                  key: Key('${index}_LIST_TILE'),
+                  key: Key(key),
                   title: Text('$index position'),
                   subtitle: Text(_generatedWordList![index]),
                   tileColor: Colors.teal,
