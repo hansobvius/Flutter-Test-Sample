@@ -23,6 +23,8 @@ void main() {
       app.main();
       await tester.pumpAndSettle();
 
+      debugPrint('init authentication test');
+
       // Retrieve widgets components by their key
       var usernameTextForm = find.byKey(const Key('USERNAME_FORM'));
       var passwordTextForm = find.byKey(const Key('PASSWORD_FORM'));
@@ -65,6 +67,8 @@ void main() {
       /// START HOME VIEW
       await tester.pumpAndSettle();
 
+      debugPrint('init home test');
+
       // Find floating button by key
       final Finder fab = find.byKey(const Key('FLOATING_BUTTON_INCREMENT'));
       expect(fab, findsOneWidget,
@@ -92,6 +96,58 @@ void main() {
               && textWidgetCurrentValue == '11',
           true,
           reason: 'Check if value matches 11 by retrieve the widget by its key');
+
+      await tester.tap(textWidgetData);
+
+      /// START ITEMS LIST VIEW
+      await tester.pumpAndSettle();
+
+      debugPrint('init items list view test');
+
+      var itemViewBuilder = find.byKey(const Key('ITEM_VIEW_BUILD'));
+      expect(itemViewBuilder, findsOneWidget, reason: 'Check if ListItemView was built');
+
+      var circularProgress = find.byKey(const Key('CIRCULAR_PROGRESS'));
+      expect(circularProgress, findsOneWidget,
+          skip: circularProgress.evaluate().isEmpty,
+          reason: 'Check if circular progress widget exists');
+
+      await tester.runAsync(() async {
+        await Future.delayed(const Duration(seconds: 10));
+
+        await tester.pump();
+
+        var listView = find.byKey(const Key('LIST_VIEW_SEPARATED'));
+        expect(listView, findsOneWidget, reason: 'Check if list view widget exists');
+
+        var firstListTile = find.byKey(const Key('0_LIST_TILE'));
+        expect(firstListTile, findsOneWidget, reason: 'Check if first list element exists');
+
+        final listViewFinder = find.byType(ListView);
+
+        final listViewHeight = tester.getSize(listViewFinder).height;
+        final listTileHeight = tester.getSize(firstListTile).height;
+
+        /// Calculation to retrieve how many scrolls count are needed
+        /// to reach last element presented from list view
+        final totalItemsPerView = listViewHeight / (listTileHeight + 16.0);
+        final maxScrollCounts = 1000 / totalItemsPerView;
+
+        final scrollableFinder = find
+            .descendant(of: listViewFinder, matching: find.byType(Scrollable));
+
+        final itemFinder = find.byKey(const ValueKey('999_LIST_TILE'));
+
+        await tester.scrollUntilVisible(
+          itemFinder,
+          listViewHeight,
+          maxScrolls: maxScrollCounts.toInt(),
+          scrollable: scrollableFinder,
+        );
+
+        expect(itemFinder, findsOneWidget,
+            reason: 'Check if last element from data list are presented on list view widget');
+      });
     });
 
     tearDown(() {
