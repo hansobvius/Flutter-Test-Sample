@@ -51,6 +51,7 @@ class _CounterViewState extends State<CounterView> {
         key: const Key('FLOATING_BUTTON_INCREMENT'),
         onPressed: _incrementCounter,
         tooltip: 'Increment',
+        focusColor: Colors.black87,
         child: const Icon(Icons.add),
       ),
     );
