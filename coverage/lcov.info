@@ -1,4 +1,4 @@
-SF:lib/application/module/home/route/home_module_router.dart
+SF:lib/application/module/counter/route/home_module_router.dart
 DA:9,0
 DA:12,0
 DA:15,0
@@ -40,7 +40,7 @@ DA:71,3
 LF:28
 LH:28
 end_of_record
-SF:lib/application/module/home/ui/counter_result.dart
+SF:lib/application/module/counter/ui/counter_result.dart
 DA:8,0
 DA:10,0
 DA:12,0
@@ -55,7 +55,7 @@ DA:24,0
 LF:11
 LH:0
 end_of_record
-SF:lib/application/module/home/ui/home.dart
+SF:lib/application/module/counter/ui/home.dart
 DA:6,1
 DA:10,0
 DA:11,0

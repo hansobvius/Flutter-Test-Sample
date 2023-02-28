@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_driver_sample/application/module/home/ui/counter_result.dart';
-import 'package:flutter_driver_sample/application/module/home/ui/home.dart';
+import 'package:flutter_driver_sample/application/module/counter/ui/counter_result.dart';
+import 'package:flutter_driver_sample/application/module/counter/ui/counter_view.dart';
 import 'package:go_router/go_router.dart';
 
 
@@ -12,7 +12,7 @@ final GoRouter homeModuleRouter = GoRouter(
       name: 'home',
           path: '/',
           builder: (BuildContext context, GoRouterState state) {
-            return const Home(title: 'Flutter integration test sample');
+            return const CounterView(title: 'Flutter integration test sample');
           },
           routes: <GoRoute>[
             GoRoute(

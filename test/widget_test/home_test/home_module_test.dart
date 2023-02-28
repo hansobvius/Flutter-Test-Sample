@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_driver_sample/application/module/home/ui/home.dart';
+import 'package:flutter_driver_sample/application/module/counter/ui/counter_view.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../base_widget_test_launcher.dart';
@@ -13,7 +13,7 @@ void main() {
     testWidgets('counter increments smoke test', (WidgetTester tester) async {
 
       // Build our app and trigger a frame.
-      await tester.pumpWidget(initializeSingleView(const Home(title: 'home')));
+      await tester.pumpWidget(initializeSingleView(const CounterView(title: 'home')));
 
       // Verify that our counter starts at 0.
       expect(find.text('0'), findsOneWidget);
@@ -31,7 +31,7 @@ void main() {
     testWidgets('first view text', (tester) async {
 
       // Initialize
-      await tester.pumpWidget(initializeSingleView(const Home(title: 'home')));
+      await tester.pumpWidget(initializeSingleView(const CounterView(title: 'home')));
       await tester.pumpAndSettle();
 
       // Verify the counter starts at 0.
