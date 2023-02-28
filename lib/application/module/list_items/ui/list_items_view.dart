@@ -62,9 +62,7 @@ class _ListItemsState extends State<ListItemsView> {
               itemCount: _controller.wordListLength,
               separatorBuilder: (BuildContext context, int index) => const Divider(),
               itemBuilder: (context, index) {
-                print('LENGTH ${_controller.wordListLength}');
                 String key = '${index}_LIST_TILE';
-                print('KEY $key');
                 return ListTile(
                   key: Key(key),
                   title: Text('$index position'),
