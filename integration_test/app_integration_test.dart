@@ -64,10 +64,10 @@ void main() {
 
       await tester.tap(loginButton);
 
-      /// START HOME VIEW
+      /// START COUNTER VIEW
       await tester.pumpAndSettle();
 
-      debugPrint('init home test');
+      debugPrint('init counter test');
 
       // Find floating button by key
       final Finder fab = find.byKey(const Key('FLOATING_BUTTON_INCREMENT'));
@@ -87,8 +87,13 @@ void main() {
       expect(textWidgetData, findsOneWidget,
           reason: 'Check if exist a text widget with declared key');
 
+      // check if a particular widget could be fond on screen
+      final Finder textResultWidgetData = find.byKey(const Key('COUNTER_RESULT_VALUE'));
+      expect(textResultWidgetData, findsOneWidget,
+          reason: 'Check if exist a text counter result widget with declared key');
+
       // Check current value of Text Widget data
-      var textWidget = textWidgetData.evaluate().first.widget as Text;
+      var textWidget = textResultWidgetData.evaluate().first.widget as Text;
       var textWidgetCurrentValue = textWidget.data;
       expect(
           textWidgetCurrentValue != null
@@ -97,7 +102,13 @@ void main() {
           true,
           reason: 'Check if value matches 11 by retrieve the widget by its key');
 
-      await tester.tap(textWidgetData);
+      // check if a particular widget could be fond on screen
+      final Finder selectableButton = find.byKey(const Key('SELECTABLE_BUTTON_KEY'));
+      expect(selectableButton, findsOneWidget,
+          reason: 'Check if exist a selectable button widget with declared key');
+
+      await tester.longPress(selectableButton);
+
 
       /// START ITEMS LIST VIEW
       await tester.pumpAndSettle();
