@@ -101,7 +101,12 @@ void main() {
           true,
           reason: 'Check if value matches 11 by retrieve the widget by its key');
 
-      await tester.longPress(textWidgetData);
+      // check if a particular widget could be fond on screen
+      final Finder selectableButton = find.byKey(const Key('SELECTABLE_BUTTON_KEY'));
+      expect(selectableButton, findsOneWidget,
+          reason: 'Check if exist a selectable button widget with declared key');
+
+      await tester.longPress(selectableButton);
 
 
       /// START ITEMS LIST VIEW

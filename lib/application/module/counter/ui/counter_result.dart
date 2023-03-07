@@ -44,6 +44,7 @@ class _CounterResultState extends State<CounterResult> {
               )
             ),
             SelectableButton(
+              key: const Key('SELECTABLE_BUTTON_KEY'),
               selected: selected,
               onPressed: () => _navigate(context),
               style: ButtonStyle(
