@@ -52,24 +52,31 @@ class _ListItemsState extends State<ListItemsView> {
                 key: Key('CIRCULAR_PROGRESS'),
                 height: 40.0,
                 width: 40.0,
-                child: CircularProgressIndicator()
+                child: CircularProgressIndicator(color: Colors.black)
               ),
             );
           }
 
-          return ListView.separated(
-              key: const Key('LIST_VIEW_SEPARATED'),
-              itemCount: _controller.wordListLength,
-              separatorBuilder: (BuildContext context, int index) => const Divider(),
-              itemBuilder: (context, index) {
-                String key = '${index}_LIST_TILE';
-                return ListTile(
-                  key: Key(key),
-                  title: Text('$index position'),
-                  subtitle: Text(_generatedWordList![index]),
-                  tileColor: Colors.teal,
-                );
-              }
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.separated(
+                key: const Key('LIST_VIEW_SEPARATED'),
+                itemCount: _controller.wordListLength,
+                separatorBuilder: (BuildContext context, int index) => const Divider(),
+                itemBuilder: (context, index) {
+                  String key = '${index}_LIST_TILE';
+                  return ListTile(
+                    key: Key(key),
+                    title: Text('$index position'),
+                    subtitle: Text(_generatedWordList![index]),
+                    tileColor: Colors.white,
+                    shape: RoundedRectangleBorder( //<-- SEE HERE
+                      side: const BorderSide(width: 2),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  );
+                }
+            ),
           );
         }
       )

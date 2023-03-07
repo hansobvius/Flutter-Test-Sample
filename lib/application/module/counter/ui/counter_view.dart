@@ -31,6 +31,7 @@ class _CounterViewState extends State<CounterView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: Colors.black,
       ),
       body: Center(
         child: Column(
@@ -52,6 +53,7 @@ class _CounterViewState extends State<CounterView> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         focusColor: Colors.black87,
+        backgroundColor: Colors.black,
         child: const Icon(Icons.add),
       ),
     );

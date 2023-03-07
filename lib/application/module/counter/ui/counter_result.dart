@@ -26,6 +26,7 @@ class _CounterResultState extends State<CounterResult> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Counter Result'),
+        backgroundColor: Colors.black,
       ),
       body: Center(
         child: Column(
@@ -35,8 +36,9 @@ class _CounterResultState extends State<CounterResult> {
             const Padding(
               padding: EdgeInsets.only(bottom: 8.0),
               child: Text(
-                'Counter Result',
+                'Press for a long time the button below',
                 key: Key('COUNTER_RESULT'),
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 24.0
@@ -51,9 +53,9 @@ class _CounterResultState extends State<CounterResult> {
                 foregroundColor: MaterialStateProperty.resolveWith<Color?>(
                       (Set<MaterialState> states) {
                     if (states.contains(MaterialState.selected)) {
-                      return Colors.white;
+                      return Colors.black12;
                     }
-                    return null; // defer to the defaults
+                    return Colors.black12;// defer to the defaults
                   },
                 ),
                 backgroundColor: MaterialStateProperty.resolveWith<Color?>(

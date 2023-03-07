@@ -123,14 +123,17 @@ class _LoginState extends State<Login> {
                           return const SizedBox(
                               width: 40.0,
                               height: 40.0,
-                              child: CircularProgressIndicator()
+                              child: CircularProgressIndicator(color: Colors.black,)
                           );
                         }
-                        return Container(
-                          child: TextButton(
-                            key: const Key('TEXT_BUTTON'),
-                            onPressed: _checkLogin,
-                            child: const Text('click here'),
+                        return TextButton(
+                          key: const Key('TEXT_BUTTON'),
+                          onPressed: _checkLogin,
+                          child: const Text(
+                            'click here',
+                            style: TextStyle(
+                              color: Colors.black
+                            ),
                           ),
                         );
                       }
