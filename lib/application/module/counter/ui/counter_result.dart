@@ -36,6 +36,7 @@ class _CounterResultState extends State<CounterResult> {
               padding: EdgeInsets.only(bottom: 8.0),
               child: Text(
                 'Counter Result',
+                key: Key('COUNTER_RESULT'),
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 24.0
@@ -65,6 +66,7 @@ class _CounterResultState extends State<CounterResult> {
               ),
               child: Text(
                   widget.counterResultValue.toString(),
+                  key: const Key('COUNTER_RESULT_VALUE'),
                   style: Theme.of(context).textTheme.headline4
               )
             )
