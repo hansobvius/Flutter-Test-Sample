@@ -18,11 +18,11 @@ class _CounterViewState extends State<CounterView> {
   void _incrementCounter() {
     setState(() {
       _counter++;
-      // if (_counter == 11) {
-      //   context.goNamed('counter_result', queryParams: {
-      //     'counterResultValue' : _counter.toString()
-      //   });
-      // }
+      if (_counter == 11) {
+        context.goNamed('counter_result', queryParams: {
+          'counterResultValue' : _counter.toString()
+        });
+      }
     });
   }
 

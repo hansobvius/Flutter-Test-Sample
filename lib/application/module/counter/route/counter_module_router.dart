@@ -6,9 +6,9 @@ import '../ui/counter_view.dart';
 /// CounterView Module Router
 ///
 
-final GoRoute homeModuleRouter = GoRoute(
-    name: 'home',
-    path: '/',
+final GoRoute counterModuleRouter = GoRoute(
+    name: 'counter',
+    path: '/counter',
     builder: (BuildContext context, GoRouterState state) {
       return const CounterView(title: 'Flutter integration test sample');
     },

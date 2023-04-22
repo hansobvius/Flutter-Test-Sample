@@ -40,7 +40,7 @@ class _LoginState extends State<Login> {
               (bool isValid) {
             setLoadingState();
             if (isValid) {
-              context.goNamed('home');
+              context.goNamed('counter');
             }
           });
     }

@@ -19,7 +19,7 @@ void main() {
 
     testWidgets('login authentication success test', (WidgetTester tester) async {
 
-      /// START APP FROM LOGIN VIEW
+      /// START APP FROM LOGIN VIEWd
       app.main();
       await tester.pumpAndSettle();
 
