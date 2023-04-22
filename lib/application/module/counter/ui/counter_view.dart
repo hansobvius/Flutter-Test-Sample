@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class Home extends StatefulWidget {
+class CounterView extends StatefulWidget {
   
-  const Home({super.key, required this.title});
+  const CounterView({super.key, required this.title});
 
   final String title;
 
   @override
-  State<Home> createState() => _HomeState();
+  State<CounterView> createState() => _CounterViewState();
 }
 
-class _HomeState extends State<Home> {
+class _CounterViewState extends State<CounterView> {
 
   int _counter = 0;
 
@@ -31,6 +31,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: Colors.black,
       ),
       body: Center(
         child: Column(
@@ -51,6 +52,8 @@ class _HomeState extends State<Home> {
         key: const Key('FLOATING_BUTTON_INCREMENT'),
         onPressed: _incrementCounter,
         tooltip: 'Increment',
+        focusColor: Colors.black87,
+        backgroundColor: Colors.black,
         child: const Icon(Icons.add),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_driver_sample/application/module/login/controller/login_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -16,11 +17,13 @@ void main() {
       _loginController = LoginController();
     });
 
-    testWidgets('login authentication success test', (WidgetTester tester) async {
+    testWidgets('APP WIDGET VIEW TEST', (WidgetTester tester) async {
 
       /// START APP
       app.main();
       await tester.pumpAndSettle();
+
+      debugPrint('init authentication test');
 
       // Retrieve widgets components by their key
       var usernameTextForm = find.byKey(const Key('USERNAME_FORM'));
@@ -60,8 +63,10 @@ void main() {
 
       await tester.tap(loginButton);
 
-      /// START HOME VIEW
+      /// START COUNTER VIEW
       await tester.pumpAndSettle();
+
+      debugPrint('init counter test');
 
       // Find floating button by key
       final Finder fab = find.byKey(const Key('FLOATING_BUTTON_INCREMENT'));
@@ -81,8 +86,13 @@ void main() {
       expect(textWidgetData, findsOneWidget,
           reason: 'Check if exist a text widget with declared key');
 
+      // check if a particular widget could be fond on screen
+      final Finder textResultWidgetData = find.byKey(const Key('COUNTER_RESULT_VALUE'));
+      expect(textResultWidgetData, findsOneWidget,
+          reason: 'Check if exist a text counter result widget with declared key');
+
       // Check current value of Text Widget data
-      var textWidget = textWidgetData.evaluate().first.widget as Text;
+      var textWidget = textResultWidgetData.evaluate().first.widget as Text;
       var textWidgetCurrentValue = textWidget.data;
       expect(
           textWidgetCurrentValue != null
@@ -90,6 +100,64 @@ void main() {
               && textWidgetCurrentValue == '11',
           true,
           reason: 'Check if value matches 11 by retrieve the widget by its key');
+
+      // check if a particular widget could be fond on screen
+      final Finder selectableButton = find.byKey(const Key('SELECTABLE_BUTTON_KEY'));
+      expect(selectableButton, findsOneWidget,
+          reason: 'Check if exist a selectable button widget with declared key');
+
+      await tester.longPress(selectableButton);
+
+
+      /// START ITEMS LIST VIEW
+      await tester.pumpAndSettle();
+
+      debugPrint('init items list view test');
+
+      var itemViewBuilder = find.byKey(const Key('ITEM_VIEW_BUILD'));
+      expect(itemViewBuilder, findsOneWidget, reason: 'Check if ListItemView was built');
+
+      var circularProgress = find.byKey(const Key('CIRCULAR_PROGRESS'));
+      expect(circularProgress, findsOneWidget,
+          skip: circularProgress.evaluate().isEmpty,
+          reason: 'Check if circular progress widget exists');
+
+      await tester.runAsync(() async {
+        await Future.delayed(const Duration(seconds: 10));
+
+        await tester.pump();
+
+        var listView = find.byKey(const Key('LIST_VIEW_SEPARATED'));
+        expect(listView, findsOneWidget, reason: 'Check if list view widget exists');
+
+        var firstListTile = find.byKey(const Key('0_LIST_TILE'));
+        expect(firstListTile, findsOneWidget, reason: 'Check if first list element exists');
+
+        final listViewFinder = find.byType(ListView);
+
+        final listViewHeight = tester.getSize(listViewFinder).height;
+        final listTileHeight = tester.getSize(firstListTile).height;
+
+        /// Calculation to retrieve how many scrolls count are needed
+        /// to reach last element presented from list view
+        final totalItemsPerView = listViewHeight / (listTileHeight + 16.0);
+        final maxScrollCounts = 1000 / totalItemsPerView;
+
+        final scrollableFinder = find
+            .descendant(of: listViewFinder, matching: find.byType(Scrollable));
+
+        final itemFinder = find.byKey(const ValueKey('999_LIST_TILE'));
+
+        await tester.scrollUntilVisible(
+          itemFinder,
+          listViewHeight,
+          maxScrolls: maxScrollCounts.toInt(),
+          scrollable: scrollableFinder,
+        );
+
+        expect(itemFinder, findsOneWidget,
+            reason: 'Check if last element from data list are presented on list view widget');
+      });
     });
 
     tearDown(() {

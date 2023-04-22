@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_driver_sample/application/module/home/ui/home.dart';
+import 'package:flutter_driver_sample/application/module/counter/ui/counter_view.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../base_widget_test_launcher.dart';
-import 'home_module_router.dart';
+import 'counter_module_router.dart';
 
 
 void main() {
 
-  group('HOME TEST', () {
+  group('COUNTER TEST', () {
 
     testWidgets('counter increments smoke test', (WidgetTester tester) async {
 
       // Build our app and trigger a frame.
-      await tester.pumpWidget(initializeSingleView(const Home(title: 'home')));
+      await tester.pumpWidget(initializeSingleView(const CounterView(title: 'home')));
 
       // Verify that our counter starts at 0.
       expect(find.text('0'), findsOneWidget);
@@ -31,7 +31,7 @@ void main() {
     testWidgets('first view text', (tester) async {
 
       // Initialize
-      await tester.pumpWidget(initializeSingleView(const Home(title: 'home')));
+      await tester.pumpWidget(initializeSingleView(const CounterView(title: 'home')));
       await tester.pumpAndSettle();
 
       // Verify the counter starts at 0.
@@ -74,8 +74,13 @@ void main() {
       expect(textWidgetData, findsOneWidget,
           reason: 'Check if exist a text widget with declared key');
 
+      // check if a particular widget could be fond on screen
+      final Finder textResultWidgetData = find.byKey(const Key('COUNTER_RESULT_VALUE'));
+      expect(textResultWidgetData, findsOneWidget,
+          reason: 'Check if exist a text counter result widget with declared key');
+
       // Check current value of Text Widget data
-      var textWidget = textWidgetData.evaluate().first.widget as Text;
+      var textWidget = textResultWidgetData.evaluate().first.widget as Text;
       var textWidgetCurrentValue = textWidget.data;
       expect(
           textWidgetCurrentValue != null

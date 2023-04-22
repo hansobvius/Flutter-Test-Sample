@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_driver_sample/application/module/counter/route/home_module_router.dart';
 import 'package:go_router/go_router.dart';
 
 /// base widget to test single view
