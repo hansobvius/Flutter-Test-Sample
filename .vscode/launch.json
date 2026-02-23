@@ -6,6 +6,48 @@
     "configurations": [
 
         {
+            "name": "Flutter-Test-Sample (Android Debug)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "android",
+            "flutterMode": "debug"
+        },
+        {
+            "name": "Flutter-Test-Sample (Android Profile)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "android",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "Flutter-Test-Sample (Android Release)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "android",
+            "flutterMode": "release"
+        },
+        {
+            "name": "Flutter-Test-Sample (Chrome Debug)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "chrome",
+            "flutterMode": "debug"
+        },
+        {
+            "name": "Flutter-Test-Sample (Chrome Profile)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "chrome",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "Flutter-Test-Sample (Chrome Release)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "chrome",
+            "flutterMode": "release"
+        },
+        {
             "name": "Flutter-Test-Sample",
             "request": "launch",
             "type": "dart"
