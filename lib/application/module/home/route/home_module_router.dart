@@ -17,7 +17,7 @@ final GoRoute homeModuleRouter = GoRoute(
           name: 'counter_result',
           path: 'counter_result',
           builder: (BuildContext context, GoRouterState state) {
-            return CounterResult(counterResultValue: state.queryParams['counterResultValue']!);
+            return CounterResult(counterResultValue: state.uri.queryParameters['counterResultValue']!);
           }
       )
     ]

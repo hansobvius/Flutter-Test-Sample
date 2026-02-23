@@ -1,16 +1,47 @@
-# flutter_driver_sample
+# Flutter Test Sample
 
-Flutter Integration Test Sample
+A complete Flutter application demonstrating how to write and execute both **Widget Tests** and **Integration Tests**.
+
+## Overview
+
+This project serves as a practical testing sample containing:
+- A basic application flow with **Login**, **Home (Counter)**, and **List Items** views.
+- **Widget Tests**: Individual component testing ensuring UI isolation and state verification without physical devices.
+- **Integration Tests**: End-to-end testing running on a real device/emulator to verify the complete user flow sequence (Login -> Home Counter -> Scrolling List).
+
+## Features Tested
+
+1. **Authentication (Login Test)**
+   - Text input validations and interactions
+   - Login controller logic expectations
+   - View transitions
+
+2. **Counter View (Home Test)**
+   - Floating action button interaction
+   - Finding elements by `ValueKey`
+   - State updates verification
+
+3. **Scrollable List (List Items Test)**
+   - Rendering long `ListView`s
+   - Scrolling until an item becomes visible
+   - Delay and async operations handling
 
 ## Getting Started
 
-A simple project used to demonstrate Widget and Integration app tests
+To run the widget tests:
+```bash
+flutter test
+```
 
-The following links are useful information from Flutter documentation, to show how start your first Widget and Integration tests.
+To run the integration tests (requires a running device or emulator):
+```bash
+flutter test integration_test/app_integration_test.dart
+```
+
+## Resources
+
+The following links provide useful information from Flutter documentation, to show how you can start your first Widget and Integration tests.
 
 - [Integration Test Cookbook](https://docs.flutter.dev/cookbook/testing/integration/introduction)
 - [Widget Test Cookbook](https://docs.flutter.dev/cookbook/testing/widget/introduction)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Flutter Online Documentation](https://docs.flutter.dev/)

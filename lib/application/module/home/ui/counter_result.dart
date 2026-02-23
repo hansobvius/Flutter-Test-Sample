@@ -21,7 +21,7 @@ class CounterResult extends StatelessWidget {
           child: Text(
             counterResultValue.toString(),
             key: const Key('COUNTER_RESULT'),
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
         ),
       ),
