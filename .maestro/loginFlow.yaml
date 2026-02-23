@@ -1,0 +1,24 @@
+appId: com.example.flutter_driver_sample
+---
+- launchApp:
+    clearState: true
+
+# Tap on the username field, clear default text, and enter username
+- tapOn: "Username"
+- eraseText: 20
+- inputText: "admin"
+
+# Tap on the password field, clear default text, and enter password
+- tapOn: "Password"
+- eraseText: 20
+- inputText: "password"
+
+# Tap the login button
+- tapOn: "click here"
+
+# Verify we reached the home page by checking the counter text
+- assertVisible: "You have pushed the button this many times:"
+
+# Interact with the counter
+- tapOn:
+    point: 50%, 90% # Approx location for floating action button
