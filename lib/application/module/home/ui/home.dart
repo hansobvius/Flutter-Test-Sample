@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
     setState(() {
       _counter++;
       if (_counter == 11) {
-        context.goNamed('counter_result', queryParams: {
+        context.goNamed('counter_result', queryParameters: {
           'counterResultValue' : _counter.toString()
         });
       }
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
             Text(
               '$_counter',
               key: const Key('COUNTER_TEXT'),
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
