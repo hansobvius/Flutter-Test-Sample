@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_driver_sample/application/module/list_items/controller/list_item_controller.dart';
+import 'package:flutter_test_sample/application/module/list_items/controller/list_item_controller.dart';
 
 class ListItemsView extends StatefulWidget {
 

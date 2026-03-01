@@ -1,4 +1,4 @@
-package com.example.flutter_driver_sample
+package com.example.flutter_test_sample
 
 import io.flutter.embedding.android.FlutterActivity
 

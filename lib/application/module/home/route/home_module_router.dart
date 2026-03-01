@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_driver_sample/application/module/home/ui/counter_result.dart';
+import 'package:flutter_test_sample/application/module/home/ui/counter_result.dart';
 import 'package:go_router/go_router.dart';
 import '../ui/home.dart';
 

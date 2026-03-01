@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_driver_sample/application/module/login/controller/login_controller.dart';
-import 'package:flutter_driver_sample/application/module/login/ui/login.dart';
+import 'package:flutter_test_sample/application/module/login/controller/login_controller.dart';
+import 'package:flutter_test_sample/application/module/login/ui/login.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../base_widget_test_launcher.dart';
