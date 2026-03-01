@@ -1,0 +1,491 @@
+﻿diff --git a/.maestro/loginFlow.yaml b/.maestro/loginFlow.yaml
+index 25cb5ef..32f3eee 100644
+--- a/.maestro/loginFlow.yaml
++++ b/.maestro/loginFlow.yaml
+@@ -1,4 +1,4 @@
+-appId: com.example.flutter_driver_sample
++appId: com.example.flutter_test_sample
+ ---
+ - launchApp:
+     clearState: true
+diff --git a/analyze_output.txt b/analyze_output.txt
+index 500d166..c1cc11f 100644
+Binary files a/analyze_output.txt and b/analyze_output.txt differ
+diff --git a/analyze_output.utf8.txt b/analyze_output.utf8.txt
+index abca736..d0929b2 100644
+--- a/analyze_output.utf8.txt
++++ b/analyze_output.utf8.txt
+@@ -3,7 +3,7 @@
+    info - The local variable '_loginController' starts with an underscore - integration_test\app_integration_test.dart:12:25 - no_leading_underscores_for_local_identifiers
+ warning - Unnecessary type check; the result is always 'true' - integration_test\app_integration_test.dart:44:44 - unnecessary_type_check
+ warning - Unnecessary type check; the result is always 'true' - integration_test\app_integration_test.dart:49:44 - unnecessary_type_check
+-warning - Unused import: 'package:flutter_driver_sample/application/module/login/route/login_module_router.dart' - lib\application\app.dart:2:8 - unused_import
++warning - Unused import: 'package:flutter_test_sample/application/module/login/route/login_module_router.dart' - lib\application\app.dart:2:8 - unused_import
+ warning - Unused import: 'module/home/route/home_module_router.dart' - lib\application\app.dart:4:8 - unused_import
+   error - The getter 'queryParams' isn't defined for the type 'GoRouterState' - lib\application\module\home\route\home_module_router.dart:20:60 - undefined_getter
+   error - The named parameter 'queryParams' isn't defined - lib\application\module\home\ui\home.dart:22:43 - undefined_named_parameter
+@@ -14,7 +14,7 @@ warning - Unused import: 'module/home/route/home_module_router.dart' - lib\appli
+    info - The local variable '_loginController' starts with an underscore - test\widget_test\app_test\integration_widget_test.dart:12:25 - no_leading_underscores_for_local_identifiers
+ warning - Unnecessary type check; the result is always 'true' - test\widget_test\app_test\integration_widget_test.dart:44:44 - unnecessary_type_check
+ warning - Unnecessary type check; the result is always 'true' - test\widget_test\app_test\integration_widget_test.dart:49:44 - unnecessary_type_check
+-warning - Unused import: 'package:flutter_driver_sample/application/module/home/route/home_module_router.dart' - test\widget_test\base_widget_test_launcher.dart:2:8 - unused_import
++warning - Unused import: 'package:flutter_test_sample/application/module/home/route/home_module_router.dart' - test\widget_test\base_widget_test_launcher.dart:2:8 - unused_import
+ warning - This class (or a class that this class inherits from) is marked as '@immutable', but one or more of its instance fields aren't final: MyApp.count - test\widget_test\flutter_doc_example\view_example.dart:9:7 - must_be_immutable
+    info - Don't invoke 'print' in production code - test\widget_test\flutter_doc_example\view_example.dart:32:13 - avoid_print
+    info - Don't invoke 'print' in production code - test\widget_test\flutter_doc_example\view_example.dart:33:13 - avoid_print
+diff --git a/android/app/build.gradle b/android/app/build.gradle
+index 8d640b3..6787522 100644
+--- a/android/app/build.gradle
++++ b/android/app/build.gradle
+@@ -44,7 +44,7 @@ android {
+ 
+     defaultConfig {
+         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+-        applicationId "com.example.flutter_driver_sample"
++        applicationId "com.example.flutter_test_sample"
+         // You can update the following values to match your application needs.
+         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
+         minSdkVersion flutter.minSdkVersion
+diff --git a/android/app/src/debug/AndroidManifest.xml b/android/app/src/debug/AndroidManifest.xml
+index 0264f4d..6ce4708 100644
+--- a/android/app/src/debug/AndroidManifest.xml
++++ b/android/app/src/debug/AndroidManifest.xml
+@@ -1,5 +1,5 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    package="com.example.flutter_driver_sample">
++    package="com.example.flutter_test_sample">
+     <!-- The INTERNET permission is required for development. Specifically,
+          the Flutter tool needs it to communicate with the running application
+          to allow setting breakpoints, to provide hot reload, etc.
+diff --git a/android/app/src/main/AndroidManifest.xml b/android/app/src/main/AndroidManifest.xml
+index 989ced7..5b3b6b4 100644
+--- a/android/app/src/main/AndroidManifest.xml
++++ b/android/app/src/main/AndroidManifest.xml
+@@ -1,7 +1,7 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    package="com.example.flutter_driver_sample">
++    package="com.example.flutter_test_sample">
+    <application
+-        android:label="flutter_driver_sample"
++        android:label="flutter_test_sample"
+         android:name="${applicationName}"
+         android:icon="@mipmap/ic_launcher">
+         <activity
+diff --git a/android/app/src/main/kotlin/com/example/flutter_driver_sample/MainActivity.kt b/android/app/src/main/kotlin/com/example/flutter_driver_sample/MainActivity.kt
+index cbcf49a..4a68e60 100644
+--- a/android/app/src/main/kotlin/com/example/flutter_driver_sample/MainActivity.kt
++++ b/android/app/src/main/kotlin/com/example/flutter_driver_sample/MainActivity.kt
+@@ -1,4 +1,4 @@
+-package com.example.flutter_driver_sample
++package com.example.flutter_test_sample
+ 
+ import io.flutter.embedding.android.FlutterActivity
+ 
+diff --git a/android/app/src/profile/AndroidManifest.xml b/android/app/src/profile/AndroidManifest.xml
+index 0264f4d..6ce4708 100644
+--- a/android/app/src/profile/AndroidManifest.xml
++++ b/android/app/src/profile/AndroidManifest.xml
+@@ -1,5 +1,5 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    package="com.example.flutter_driver_sample">
++    package="com.example.flutter_test_sample">
+     <!-- The INTERNET permission is required for development. Specifically,
+          the Flutter tool needs it to communicate with the running application
+          to allow setting breakpoints, to provide hot reload, etc.
+diff --git a/integration_test/app_integration_test.dart b/integration_test/app_integration_test.dart
+index 4b3ea5f..5e3dbea 100644
+--- a/integration_test/app_integration_test.dart
++++ b/integration_test/app_integration_test.dart
+@@ -1,9 +1,9 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/login/controller/login_controller.dart';
++import 'package:flutter_test_sample/application/module/login/controller/login_controller.dart';
+ import 'package:flutter_test/flutter_test.dart';
+ import 'package:integration_test/integration_test.dart';
+ 
+-import 'package:flutter_driver_sample/main.dart' as app;
++import 'package:flutter_test_sample/main.dart' as app;
+ 
+ void main() {
+ 
+diff --git a/integration_test/single_integration_test/list_item_module/list_item_module_integration_test.dart b/integration_test/single_integration_test/list_item_module/list_item_module_integration_test.dart
+index 4e246a3..2d82b68 100644
+--- a/integration_test/single_integration_test/list_item_module/list_item_module_integration_test.dart
++++ b/integration_test/single_integration_test/list_item_module/list_item_module_integration_test.dart
+@@ -1,5 +1,5 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/list_items/ui/list_items_view.dart';
++import 'package:flutter_test_sample/application/module/list_items/ui/list_items_view.dart';
+ import 'package:flutter_test/flutter_test.dart';
+ import 'package:integration_test/integration_test.dart';
+ import '../../../test/widget_test/base_widget_test_launcher.dart';
+diff --git a/ios/Runner/Info.plist b/ios/Runner/Info.plist
+index bda342f..55db6da 100644
+--- a/ios/Runner/Info.plist
++++ b/ios/Runner/Info.plist
+@@ -13,7 +13,7 @@
+ 	<key>CFBundleInfoDictionaryVersion</key>
+ 	<string>6.0</string>
+ 	<key>CFBundleName</key>
+-	<string>flutter_driver_sample</string>
++	<string>flutter_test_sample</string>
+ 	<key>CFBundlePackageType</key>
+ 	<string>APPL</string>
+ 	<key>CFBundleShortVersionString</key>
+diff --git a/lib/application/app.dart b/lib/application/app.dart
+index 64628fc..af9d4ae 100644
+--- a/lib/application/app.dart
++++ b/lib/application/app.dart
+@@ -1,6 +1,6 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/login/route/login_module_router.dart';
+-import 'package:flutter_driver_sample/application/app_routes.dart';
++import 'package:flutter_test_sample/application/module/login/route/login_module_router.dart';
++import 'package:flutter_test_sample/application/app_routes.dart';
+ import 'module/home/route/home_module_router.dart';
+ 
+ class App extends StatelessWidget {
+diff --git a/lib/application/app_routes.dart b/lib/application/app_routes.dart
+index b827a27..de835bf 100644
+--- a/lib/application/app_routes.dart
++++ b/lib/application/app_routes.dart
+@@ -1,5 +1,5 @@
+-import 'package:flutter_driver_sample/application/module/home/route/home_module_router.dart';
+-import 'package:flutter_driver_sample/application/module/login/route/login_module_router.dart';
++import 'package:flutter_test_sample/application/module/home/route/home_module_router.dart';
++import 'package:flutter_test_sample/application/module/login/route/login_module_router.dart';
+ import 'package:go_router/go_router.dart';
+ 
+ import 'module/list_items/route/list_items_routes.dart';
+diff --git a/lib/application/module/home/route/home_module_router.dart b/lib/application/module/home/route/home_module_router.dart
+index 0d2b274..e576555 100644
+--- a/lib/application/module/home/route/home_module_router.dart
++++ b/lib/application/module/home/route/home_module_router.dart
+@@ -1,5 +1,5 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/home/ui/counter_result.dart';
++import 'package:flutter_test_sample/application/module/home/ui/counter_result.dart';
+ import 'package:go_router/go_router.dart';
+ import '../ui/home.dart';
+ 
+diff --git a/lib/application/module/list_items/route/list_items_routes.dart b/lib/application/module/list_items/route/list_items_routes.dart
+index 0a6a265..e1677a5 100644
+--- a/lib/application/module/list_items/route/list_items_routes.dart
++++ b/lib/application/module/list_items/route/list_items_routes.dart
+@@ -1,5 +1,5 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/list_items/ui/list_items_view.dart';
++import 'package:flutter_test_sample/application/module/list_items/ui/list_items_view.dart';
+ import 'package:go_router/go_router.dart';
+ 
+ 
+diff --git a/lib/application/module/list_items/ui/list_items_view.dart b/lib/application/module/list_items/ui/list_items_view.dart
+index 437562f..2e7abe7 100644
+--- a/lib/application/module/list_items/ui/list_items_view.dart
++++ b/lib/application/module/list_items/ui/list_items_view.dart
+@@ -1,5 +1,5 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/list_items/controller/list_item_controller.dart';
++import 'package:flutter_test_sample/application/module/list_items/controller/list_item_controller.dart';
+ 
+ class ListItemsView extends StatefulWidget {
+ 
+diff --git a/linux/CMakeLists.txt b/linux/CMakeLists.txt
+index bccd0bd..d7dcc01 100644
+--- a/linux/CMakeLists.txt
++++ b/linux/CMakeLists.txt
+@@ -4,10 +4,10 @@ project(runner LANGUAGES CXX)
+ 
+ # The name of the executable created for the application. Change this to change
+ # the on-disk name of your application.
+-set(BINARY_NAME "flutter_driver_sample")
++set(BINARY_NAME "flutter_test_sample")
+ # The unique GTK application identifier for this application. See:
+ # https://wiki.gnome.org/HowDoI/ChooseApplicationID
+-set(APPLICATION_ID "com.example.flutter_driver_sample")
++set(APPLICATION_ID "com.example.flutter_test_sample")
+ 
+ # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
+ # versions of CMake.
+diff --git a/linux/my_application.cc b/linux/my_application.cc
+index a867e79..7b5779c 100644
+--- a/linux/my_application.cc
++++ b/linux/my_application.cc
+@@ -40,11 +40,11 @@ static void my_application_activate(GApplication* application) {
+   if (use_header_bar) {
+     GtkHeaderBar* header_bar = GTK_HEADER_BAR(gtk_header_bar_new());
+     gtk_widget_show(GTK_WIDGET(header_bar));
+-    gtk_header_bar_set_title(header_bar, "flutter_driver_sample");
++    gtk_header_bar_set_title(header_bar, "flutter_test_sample");
+     gtk_header_bar_set_show_close_button(header_bar, TRUE);
+     gtk_window_set_titlebar(window, GTK_WIDGET(header_bar));
+   } else {
+-    gtk_window_set_title(window, "flutter_driver_sample");
++    gtk_window_set_title(window, "flutter_test_sample");
+   }
+ 
+   gtk_window_set_default_size(window, 1280, 720);
+diff --git a/macos/Runner.xcodeproj/project.pbxproj b/macos/Runner.xcodeproj/project.pbxproj
+index 58819b6..508c16a 100644
+--- a/macos/Runner.xcodeproj/project.pbxproj
++++ b/macos/Runner.xcodeproj/project.pbxproj
+@@ -55,7 +55,7 @@
+ /* Begin PBXFileReference section */
+ 		333000ED22D3DE5D00554162 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+ 		335BBD1A22A9A15E00E9071D /* GeneratedPluginRegistrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedPluginRegistrant.swift; sourceTree = "<group>"; };
+-		33CC10ED2044A3C60003C045 /* flutter_driver_sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flutter_driver_sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
++		33CC10ED2044A3C60003C045 /* flutter_test_sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flutter_test_sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+ 		33CC10F02044A3C60003C045 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+ 		33CC10F22044A3C60003C045 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Runner/Assets.xcassets; sourceTree = "<group>"; };
+ 		33CC10F52044A3C60003C045 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+@@ -123,7 +123,7 @@
+ 		33CC10EE2044A3C60003C045 /* Products */ = {
+ 			isa = PBXGroup;
+ 			children = (
+-				33CC10ED2044A3C60003C045 /* flutter_driver_sample.app */,
++				33CC10ED2044A3C60003C045 /* flutter_test_sample.app */,
+ 			);
+ 			name = Products;
+ 			sourceTree = "<group>";
+@@ -192,7 +192,7 @@
+ 			);
+ 			name = Runner;
+ 			productName = Runner;
+-			productReference = 33CC10ED2044A3C60003C045 /* flutter_driver_sample.app */;
++			productReference = 33CC10ED2044A3C60003C045 /* flutter_test_sample.app */;
+ 			productType = "com.apple.product-type.application";
+ 		};
+ /* End PBXNativeTarget section */
+diff --git a/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme b/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
+index 2cc6a23..8b59b99 100644
+--- a/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
++++ b/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
+@@ -15,7 +15,7 @@
+             <BuildableReference
+                BuildableIdentifier = "primary"
+                BlueprintIdentifier = "33CC10EC2044A3C60003C045"
+-               BuildableName = "flutter_driver_sample.app"
++               BuildableName = "flutter_test_sample.app"
+                BlueprintName = "Runner"
+                ReferencedContainer = "container:Runner.xcodeproj">
+             </BuildableReference>
+@@ -31,7 +31,7 @@
+          <BuildableReference
+             BuildableIdentifier = "primary"
+             BlueprintIdentifier = "33CC10EC2044A3C60003C045"
+-            BuildableName = "flutter_driver_sample.app"
++            BuildableName = "flutter_test_sample.app"
+             BlueprintName = "Runner"
+             ReferencedContainer = "container:Runner.xcodeproj">
+          </BuildableReference>
+@@ -54,7 +54,7 @@
+          <BuildableReference
+             BuildableIdentifier = "primary"
+             BlueprintIdentifier = "33CC10EC2044A3C60003C045"
+-            BuildableName = "flutter_driver_sample.app"
++            BuildableName = "flutter_test_sample.app"
+             BlueprintName = "Runner"
+             ReferencedContainer = "container:Runner.xcodeproj">
+          </BuildableReference>
+@@ -71,7 +71,7 @@
+          <BuildableReference
+             BuildableIdentifier = "primary"
+             BlueprintIdentifier = "33CC10EC2044A3C60003C045"
+-            BuildableName = "flutter_driver_sample.app"
++            BuildableName = "flutter_test_sample.app"
+             BlueprintName = "Runner"
+             ReferencedContainer = "container:Runner.xcodeproj">
+          </BuildableReference>
+diff --git a/macos/Runner/Configs/AppInfo.xcconfig b/macos/Runner/Configs/AppInfo.xcconfig
+index 2692fd0..f6d883e 100644
+--- a/macos/Runner/Configs/AppInfo.xcconfig
++++ b/macos/Runner/Configs/AppInfo.xcconfig
+@@ -5,7 +5,7 @@
+ // 'flutter create' template.
+ 
+ // The application's name. By default this is also the title of the Flutter window.
+-PRODUCT_NAME = flutter_driver_sample
++PRODUCT_NAME = flutter_test_sample
+ 
+ // The application's bundle identifier
+ PRODUCT_BUNDLE_IDENTIFIER = com.example.flutterDriverSample
+diff --git a/pubspec.yaml b/pubspec.yaml
+index d6ebaeb..ade5665 100644
+--- a/pubspec.yaml
++++ b/pubspec.yaml
+@@ -1,4 +1,4 @@
+-name: flutter_driver_sample
++name: flutter_test_sample
+ description: A new Flutter project.
+ 
+ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+diff --git a/test/widget_test/app_test/integration_widget_test.dart b/test/widget_test/app_test/integration_widget_test.dart
+index 2eccefa..c13de6f 100644
+--- a/test/widget_test/app_test/integration_widget_test.dart
++++ b/test/widget_test/app_test/integration_widget_test.dart
+@@ -1,9 +1,9 @@
+ import 'package:flutter/foundation.dart';
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/login/controller/login_controller.dart';
++import 'package:flutter_test_sample/application/module/login/controller/login_controller.dart';
+ import 'package:flutter_test/flutter_test.dart';
+ 
+-import 'package:flutter_driver_sample/main.dart' as app;
++import 'package:flutter_test_sample/main.dart' as app;
+ 
+ 
+ 
+diff --git a/test/widget_test/base_widget_test_launcher.dart b/test/widget_test/base_widget_test_launcher.dart
+index b11ca7e..ec893ad 100644
+--- a/test/widget_test/base_widget_test_launcher.dart
++++ b/test/widget_test/base_widget_test_launcher.dart
+@@ -1,5 +1,5 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/home/route/home_module_router.dart';
++import 'package:flutter_test_sample/application/module/home/route/home_module_router.dart';
+ import 'package:go_router/go_router.dart';
+ 
+ /// base widget to test single view
+diff --git a/test/widget_test/home_test/home_module_router.dart b/test/widget_test/home_test/home_module_router.dart
+index c0d8904..6b390d8 100644
+--- a/test/widget_test/home_test/home_module_router.dart
++++ b/test/widget_test/home_test/home_module_router.dart
+@@ -1,6 +1,6 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/home/ui/counter_result.dart';
+-import 'package:flutter_driver_sample/application/module/home/ui/home.dart';
++import 'package:flutter_test_sample/application/module/home/ui/counter_result.dart';
++import 'package:flutter_test_sample/application/module/home/ui/home.dart';
+ import 'package:go_router/go_router.dart';
+ 
+ 
+diff --git a/test/widget_test/home_test/home_module_test.dart b/test/widget_test/home_test/home_module_test.dart
+index 8d2d0c3..8036270 100644
+--- a/test/widget_test/home_test/home_module_test.dart
++++ b/test/widget_test/home_test/home_module_test.dart
+@@ -1,5 +1,5 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/home/ui/home.dart';
++import 'package:flutter_test_sample/application/module/home/ui/home.dart';
+ import 'package:flutter_test/flutter_test.dart';
+ 
+ import '../base_widget_test_launcher.dart';
+diff --git a/test/widget_test/list_items/list_items_module_test.dart b/test/widget_test/list_items/list_items_module_test.dart
+index 0b4fd39..2943f81 100644
+--- a/test/widget_test/list_items/list_items_module_test.dart
++++ b/test/widget_test/list_items/list_items_module_test.dart
+@@ -1,5 +1,5 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/list_items/ui/list_items_view.dart';
++import 'package:flutter_test_sample/application/module/list_items/ui/list_items_view.dart';
+ import 'package:flutter_test/flutter_test.dart';
+ 
+ import '../base_widget_test_launcher.dart';
+diff --git a/test/widget_test/list_items/list_items_router.dart b/test/widget_test/list_items/list_items_router.dart
+index 33e42aa..695845b 100644
+--- a/test/widget_test/list_items/list_items_router.dart
++++ b/test/widget_test/list_items/list_items_router.dart
+@@ -1,5 +1,5 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/list_items/ui/list_items_view.dart';
++import 'package:flutter_test_sample/application/module/list_items/ui/list_items_view.dart';
+ import 'package:go_router/go_router.dart';
+ 
+ 
+diff --git a/test/widget_test/login_test/login_module_test.dart b/test/widget_test/login_test/login_module_test.dart
+index f59e9df..526f2c3 100644
+--- a/test/widget_test/login_test/login_module_test.dart
++++ b/test/widget_test/login_test/login_module_test.dart
+@@ -1,6 +1,6 @@
+ import 'package:flutter/material.dart';
+-import 'package:flutter_driver_sample/application/module/login/controller/login_controller.dart';
+-import 'package:flutter_driver_sample/application/module/login/ui/login.dart';
++import 'package:flutter_test_sample/application/module/login/controller/login_controller.dart';
++import 'package:flutter_test_sample/application/module/login/ui/login.dart';
+ import 'package:flutter_test/flutter_test.dart';
+ 
+ import '../base_widget_test_launcher.dart';
+diff --git a/web/index.html b/web/index.html
+index 94521c7..a89c909 100644
+--- a/web/index.html
++++ b/web/index.html
+@@ -23,13 +23,13 @@
+   <!-- iOS meta tags & icons -->
+   <meta name="apple-mobile-web-app-capable" content="yes">
+   <meta name="apple-mobile-web-app-status-bar-style" content="black">
+-  <meta name="apple-mobile-web-app-title" content="flutter_driver_sample">
++  <meta name="apple-mobile-web-app-title" content="flutter_test_sample">
+   <link rel="apple-touch-icon" href="icons/Icon-192.png">
+ 
+   <!-- Favicon -->
+   <link rel="icon" type="image/png" href="favicon.png"/>
+ 
+-  <title>flutter_driver_sample</title>
++  <title>flutter_test_sample</title>
+   <link rel="manifest" href="manifest.json">
+ 
+   <script>
+diff --git a/web/manifest.json b/web/manifest.json
+index 7c1c09b..ab44812 100644
+--- a/web/manifest.json
++++ b/web/manifest.json
+@@ -1,6 +1,6 @@
+ {
+-    "name": "flutter_driver_sample",
+-    "short_name": "flutter_driver_sample",
++    "name": "flutter_test_sample",
++    "short_name": "flutter_test_sample",
+     "start_url": ".",
+     "display": "standalone",
+     "background_color": "#0175C2",
+diff --git a/windows/CMakeLists.txt b/windows/CMakeLists.txt
+index 4f1cd69..285bdbd 100644
+--- a/windows/CMakeLists.txt
++++ b/windows/CMakeLists.txt
+@@ -1,10 +1,10 @@
+ # Project-level configuration.
+ cmake_minimum_required(VERSION 3.14)
+-project(flutter_driver_sample LANGUAGES CXX)
++project(flutter_test_sample LANGUAGES CXX)
+ 
+ # The name of the executable created for the application. Change this to change
+ # the on-disk name of your application.
+-set(BINARY_NAME "flutter_driver_sample")
++set(BINARY_NAME "flutter_test_sample")
+ 
+ # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
+ # versions of CMake.
+diff --git a/windows/runner/Runner.rc b/windows/runner/Runner.rc
+index a3937e2..91c3c46 100644
+--- a/windows/runner/Runner.rc
++++ b/windows/runner/Runner.rc
+@@ -90,12 +90,12 @@ BEGIN
+         BLOCK "040904e4"
+         BEGIN
+             VALUE "CompanyName", "com.example" "\0"
+-            VALUE "FileDescription", "flutter_driver_sample" "\0"
++            VALUE "FileDescription", "flutter_test_sample" "\0"
+             VALUE "FileVersion", VERSION_AS_STRING "\0"
+-            VALUE "InternalName", "flutter_driver_sample" "\0"
++            VALUE "InternalName", "flutter_test_sample" "\0"
+             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
+-            VALUE "OriginalFilename", "flutter_driver_sample.exe" "\0"
+-            VALUE "ProductName", "flutter_driver_sample" "\0"
++            VALUE "OriginalFilename", "flutter_test_sample.exe" "\0"
++            VALUE "ProductName", "flutter_test_sample" "\0"
+             VALUE "ProductVersion", VERSION_AS_STRING "\0"
+         END
+     END
+diff --git a/windows/runner/main.cpp b/windows/runner/main.cpp
+index b784399..c5586db 100644
+--- a/windows/runner/main.cpp
++++ b/windows/runner/main.cpp
+@@ -27,7 +27,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
+   FlutterWindow window(project);
+   Win32Window::Point origin(10, 10);
+   Win32Window::Size size(1280, 720);
+-  if (!window.CreateAndShow(L"flutter_driver_sample", origin, size)) {
++  if (!window.CreateAndShow(L"flutter_test_sample", origin, size)) {
+     return EXIT_FAILURE;
+   }
+   window.SetQuitOnClose(true);

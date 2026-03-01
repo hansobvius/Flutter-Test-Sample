@@ -1,4 +1,4 @@
-appId: com.example.flutter_driver_sample
+appId: com.example.flutter_test_sample
 ---
 - launchApp:
     clearState: true
