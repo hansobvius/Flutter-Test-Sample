@@ -6,15 +6,20 @@ appId: com.example.flutter_test_sample
 # Tap on the username field, clear default text, and enter username
 - tapOn: "Username"
 - eraseText: 20
-- inputText: "admin"
+- inputText: "YOUR_USERNAME"
 
 # Tap on the password field, clear default text, and enter password
 - tapOn: "Password"
 - eraseText: 20
-- inputText: "password"
+- inputText: "123"
 
 # Tap the login button
 - tapOn: "click here"
+
+# The login process has an artificial 5-second delay, wait for the home page
+- extendedWaitUntil:
+    visible: "You have pushed the button this many times:"
+    timeout: 10000
 
 # Verify we reached the home page by checking the counter text
 - assertVisible: "You have pushed the button this many times:"
